@@ -8,10 +8,12 @@ with DAG (
     schedule_interval=None
 ):
     
-    create_dim_tables_if_not_exists = PostgresOperator(
+    create_stg_tables_if_not_exists = PostgresOperator(
         postgres_conn_id="my_con",
-        task_id="create_dim_tables_if_not_exits_task",
-        sql="sql/create_dim_tables.sql"
+        task_id="create_stg_tables_if_not_exits_task",
+        sql="sql/create_stg_tables.sql"
     )
 
-    create_dim_tables_if_not_exists
+
+    
+    create_stg_tables_if_not_exists
