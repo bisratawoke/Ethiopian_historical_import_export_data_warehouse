@@ -1,2 +1,4 @@
 ./dags/__pycache__
 logs/
+dags/staging/exports.csv
+dags/staging/imports.csv
