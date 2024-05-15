@@ -1,7 +1,0 @@
-version: 2
-sources:
-  - name: staging
-    database: airflow
-
-    tables:
-      - name: stg_export
