@@ -10,5 +10,6 @@ select
     to_char(date,'YYYY') as year,
     to_char(date, 'Month') as month,
     extract(year from date ) as numeric_year,
-    extract(month from date ) as numeric_month
+    extract(month from date ) as numeric_month,
+    {{ dbt_utils.generate_surrogate_key(['date']) }} as date_id
 from time_range
