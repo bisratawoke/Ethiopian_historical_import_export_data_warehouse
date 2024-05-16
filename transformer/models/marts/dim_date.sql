@@ -8,7 +8,7 @@ with time_range as (
 
 select 
     to_char(date,'YYYY') as year,
-    to_char(date, 'Month') as year_month,
+    to_char(date, 'Month') as month,
     extract(year from date ) as numeric_year,
     extract(month from date ) as numeric_month
 from time_range
