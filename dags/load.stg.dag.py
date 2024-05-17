@@ -7,6 +7,7 @@ from airflow.models import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow.operators.python import PythonOperator
 from airflow.hooks.base import BaseHook
+from airflow.operators.base import BashOperator
 from LocalFileSystemToPostgresOperator import LocalFileSystemToPostgresOperator
 
 with DAG (
@@ -74,6 +75,10 @@ with DAG (
         task_id="load_import_data_task"
     )
 
+    create_data_marts_task = BashOperator(
+        task_id='create_data_marts_task',
+        bash_command='dbt run'
+    )
   
     
-    create_stg_tables_if_not_exists >> extract_export_data_task >> extract_import_data_task  >> load_export_data_task >> load_import_data_task
+    create_stg_tables_if_not_exists >> extract_export_data_task >> extract_import_data_task  >> load_export_data_task >> load_import_data_task >> create_date_marts_task

@@ -1,4 +1,5 @@
 select 
+    {{ dbt_utils.generate_surrogate_key(['Year','Month'])}} as import_id,
     dim_product.product_id,
     dim_country.country_id,
     dim_date.date_id,
